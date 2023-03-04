@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <TextView
+        android:id="@+id/currentDateTime_vid"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="TextView"
+        android:textAlignment="center"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/temperature_vid"
+        android:layout_width="0dp"
+        android:layout_height="79dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:text="TextView"
+        app:layout_constraintEnd_toStartOf="@+id/weatherIcon_vid"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/currentDateTime_vid" />
+
+    <ImageView
+        android:id="@+id/weatherIcon_vid"
+        android:layout_width="105dp"
+        android:layout_height="110dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="24dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/currentDateTime_vid"
+        app:srcCompat="@mipmap/ic_launcher" />
+
+    <TextView
+        android:id="@+id/feelsLike_vid"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="TextView"
+        app:layout_constraintEnd_toEndOf="@+id/temperature_vid"
+        app:layout_constraintStart_toStartOf="@+id/temperature_vid"
+        app:layout_constraintTop_toBottomOf="@+id/temperature_vid" />
+
+    <TextView
+        android:id="@+id/description_vid"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="TextView"
+        android:textAlignment="center"
+        app:layout_constraintEnd_toEndOf="@+id/weatherIcon_vid"
+        app:layout_constraintStart_toStartOf="@+id/feelsLike_vid"
+        app:layout_constraintTop_toBottomOf="@+id/weatherIcon_vid" />
+
+    <TextView
+        android:id="@+id/winds_vid"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="TextView"
+        android:textAlignment="center"
+        app:layout_constraintEnd_toEndOf="@+id/description_vid"
+        app:layout_constraintStart_toStartOf="@+id/description_vid"
+        app:layout_constraintTop_toBottomOf="@+id/description_vid" />
+
+    <TextView
+        android:id="@+id/humidity_vid"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="TextView"
+        app:layout_constraintStart_toStartOf="@+id/winds_vid"
+        app:layout_constraintTop_toBottomOf="@+id/winds_vid" />
+
+    <TextView
+        android:id="@+id/uvindex_vid"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="TextView"
+        app:layout_constraintStart_toStartOf="@+id/humidity_vid"
+        app:layout_constraintTop_toBottomOf="@+id/humidity_vid" />
+
+    <TextView
+        android:id="@+id/visibility_vid"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:text="TextView"
+        app:layout_constraintEnd_toEndOf="@+id/winds_vid"
+        app:layout_constraintStart_toEndOf="@+id/uvindex_vid"
+        app:layout_constraintTop_toTopOf="@+id/uvindex_vid" />
+
+    <TextView
+        android:id="@+id/morning_vid"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="64dp"
+        android:text="TextView"
+        app:layout_constraintStart_toStartOf="@+id/uvindex_vid"
+        app:layout_constraintTop_toBottomOf="@+id/uvindex_vid" />
+
+    <TextView
+        android:id="@+id/afternoon_vid"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="64dp"
+        android:text="TextView"
+        app:layout_constraintStart_toEndOf="@+id/morning_vid"
+        app:layout_constraintTop_toBottomOf="@+id/visibility_vid" />
+
+    <TextView
+        android:id="@+id/night_vid"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="64dp"
+        android:text="TextView"
+        app:layout_constraintEnd_toEndOf="@+id/visibility_vid"
+        app:layout_constraintStart_toEndOf="@+id/evening_vid"
+        app:layout_constraintTop_toBottomOf="@+id/visibility_vid" />
+
+    <TextView
+        android:id="@+id/evening_vid"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="64dp"
+        android:text="TextView"
+        app:layout_constraintStart_toEndOf="@+id/afternoon_vid"
+        app:layout_constraintTop_toBottomOf="@+id/visibility_vid" />
+</androidx.constraintlayout.widget.ConstraintLayout>
