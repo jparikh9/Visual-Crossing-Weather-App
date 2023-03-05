@@ -10,7 +10,7 @@
         android:id="@+id/currentDateTime_vid"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="TextView"
+        android:text="@string/currentDateTime_strres"
         android:textAlignment="center"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
@@ -24,7 +24,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
-        android:text="TextView"
+        android:text="@string/temperature_strres"
         app:layout_constraintEnd_toStartOf="@+id/weatherIcon_vid"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/currentDateTime_vid" />
@@ -44,7 +44,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:text="TextView"
+        android:text="@string/feelsLike_strres"
         app:layout_constraintEnd_toEndOf="@+id/temperature_vid"
         app:layout_constraintStart_toStartOf="@+id/temperature_vid"
         app:layout_constraintTop_toBottomOf="@+id/temperature_vid" />
@@ -54,7 +54,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:text="TextView"
+        android:text="@string/description_strres"
         android:textAlignment="center"
         app:layout_constraintEnd_toEndOf="@+id/weatherIcon_vid"
         app:layout_constraintStart_toStartOf="@+id/feelsLike_vid"
@@ -65,7 +65,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:text="TextView"
+        android:text="@string/winds_strres"
         android:textAlignment="center"
         app:layout_constraintEnd_toEndOf="@+id/description_vid"
         app:layout_constraintStart_toStartOf="@+id/description_vid"
@@ -76,7 +76,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:text="TextView"
+        android:text="@string/humidity_strres"
         app:layout_constraintStart_toStartOf="@+id/winds_vid"
         app:layout_constraintTop_toBottomOf="@+id/winds_vid" />
 
@@ -85,7 +85,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:text="TextView"
+        android:text="@string/uvindex_strres"
         app:layout_constraintStart_toStartOf="@+id/humidity_vid"
         app:layout_constraintTop_toBottomOf="@+id/humidity_vid" />
 
@@ -94,7 +94,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
-        android:text="TextView"
+        android:text="@string/visibility_strres"
         app:layout_constraintEnd_toEndOf="@+id/winds_vid"
         app:layout_constraintStart_toEndOf="@+id/uvindex_vid"
         app:layout_constraintTop_toTopOf="@+id/uvindex_vid" />
@@ -104,7 +104,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="64dp"
-        android:text="TextView"
+        android:text="@string/morning_strres"
         app:layout_constraintStart_toStartOf="@+id/uvindex_vid"
         app:layout_constraintTop_toBottomOf="@+id/uvindex_vid" />
 
@@ -114,7 +114,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
         android:layout_marginTop="64dp"
-        android:text="TextView"
+        android:text="@string/afternoon_strres"
         app:layout_constraintStart_toEndOf="@+id/morning_vid"
         app:layout_constraintTop_toBottomOf="@+id/visibility_vid" />
 
@@ -124,7 +124,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
         android:layout_marginTop="64dp"
-        android:text="TextView"
+        android:text="@string/night_strres"
         app:layout_constraintEnd_toEndOf="@+id/visibility_vid"
         app:layout_constraintStart_toEndOf="@+id/evening_vid"
         app:layout_constraintTop_toBottomOf="@+id/visibility_vid" />
@@ -135,7 +135,33 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
         android:layout_marginTop="64dp"
-        android:text="TextView"
+        android:text="@string/evening_strres"
         app:layout_constraintStart_toEndOf="@+id/afternoon_vid"
         app:layout_constraintTop_toBottomOf="@+id/visibility_vid" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerView"
+        android:layout_width="409dp"
+        android:layout_height="150dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/morning_vid" />
+
+    <TextView
+        android:id="@+id/sunrise_vid"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="@string/sunrise_strres"
+        app:layout_constraintStart_toStartOf="@+id/uvindex_vid"
+        app:layout_constraintTop_toBottomOf="@+id/recyclerView" />
+
+    <TextView
+        android:id="@+id/sunset_vid"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="@string/sunset_strres"
+        app:layout_constraintEnd_toEndOf="@+id/visibility_vid"
+        app:layout_constraintTop_toBottomOf="@+id/recyclerView" />
 </androidx.constraintlayout.widget.ConstraintLayout>
