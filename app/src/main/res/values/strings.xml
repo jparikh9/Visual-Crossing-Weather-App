@@ -14,4 +14,8 @@
     <string name="evening_strres">TextView</string>
     <string name="sunrise_strres">TextView</string>
     <string name="sunset_strres">TextView</string>
+    <string name="time_hw_strres">TextView</string>
+    <string name="day_hw_strres">TextView</string>
+    <string name="temperature_hw_strres">TextView</string>
+    <string name="description_hw_strres">TextView</string>
 </resources>

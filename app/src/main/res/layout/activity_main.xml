@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/background"
     tools:context=".MainActivity">
 
     <TextView
@@ -140,9 +141,10 @@
         app:layout_constraintTop_toBottomOf="@+id/visibility_vid" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerView"
+        android:id="@+id/recyclerViewHourly_vid"
         android:layout_width="409dp"
         android:layout_height="150dp"
+        android:layout_marginTop="16dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/morning_vid" />
@@ -154,7 +156,7 @@
         android:layout_marginTop="16dp"
         android:text="@string/sunrise_strres"
         app:layout_constraintStart_toStartOf="@+id/uvindex_vid"
-        app:layout_constraintTop_toBottomOf="@+id/recyclerView" />
+        app:layout_constraintTop_toBottomOf="@+id/recyclerViewHourly_vid" />
 
     <TextView
         android:id="@+id/sunset_vid"
@@ -163,5 +165,5 @@
         android:layout_marginTop="16dp"
         android:text="@string/sunset_strres"
         app:layout_constraintEnd_toEndOf="@+id/visibility_vid"
-        app:layout_constraintTop_toBottomOf="@+id/recyclerView" />
+        app:layout_constraintTop_toBottomOf="@+id/recyclerViewHourly_vid" />
 </androidx.constraintlayout.widget.ConstraintLayout>
