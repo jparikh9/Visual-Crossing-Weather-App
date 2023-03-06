@@ -1,0 +1,21 @@
+<resources>
+    <string name="app_name">Visual Crossing Weather App</string>
+    <string name="currentDateTime_strres">TextView</string>
+    <string name="temperature_strres">TextView</string>
+    <string name="feelsLike_strres">TextView</string>
+    <string name="description_strres">TextView</string>
+    <string name="winds_strres">TextView</string>
+    <string name="humidity_strres">humidity</string>
+    <string name="uvindex_strres">uvindex</string>
+    <string name="morning_strres">TextView</string>
+    <string name="visibility_strres">TextView</string>
+    <string name="afternoon_strres">TextView</string>
+    <string name="night_strres">TextView</string>
+    <string name="evening_strres">TextView</string>
+    <string name="sunrise_strres">TextView</string>
+    <string name="sunset_strres">TextView</string>
+    <string name="time_hw_strres">TextView</string>
+    <string name="day_hw_strres">TextView</string>
+    <string name="temperature_hw_strres">TextView</string>
+    <string name="description_hw_strres">TextView</string>
+</resources>

@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="@drawable/background">
+
+    <TextView
+        android:id="@+id/day_hw_vid"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/day_hw_strres"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/time_hw_vid"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="@string/time_hw_strres"
+        app:layout_constraintEnd_toEndOf="@+id/day_hw_vid"
+        app:layout_constraintStart_toStartOf="@+id/day_hw_vid"
+        app:layout_constraintTop_toBottomOf="@+id/day_hw_vid" />
+
+    <ImageView
+        android:id="@+id/weatherIcon_hw_vid"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        app:layout_constraintEnd_toEndOf="@+id/time_hw_vid"
+        app:layout_constraintStart_toStartOf="@+id/time_hw_vid"
+        app:layout_constraintTop_toBottomOf="@+id/time_hw_vid"
+        tools:srcCompat="@tools:sample/avatars" />
+
+    <TextView
+        android:id="@+id/temperature_hw_vid"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="@string/temperature_hw_strres"
+        app:layout_constraintEnd_toEndOf="@+id/weatherIcon_hw_vid"
+        app:layout_constraintStart_toStartOf="@+id/weatherIcon_hw_vid"
+        app:layout_constraintTop_toBottomOf="@+id/weatherIcon_hw_vid" />
+
+    <TextView
+        android:id="@+id/description_hw_vid"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="@string/description_hw_strres"
+        app:layout_constraintEnd_toEndOf="@+id/temperature_hw_vid"
+        app:layout_constraintStart_toStartOf="@+id/temperature_hw_vid"
+        app:layout_constraintTop_toBottomOf="@+id/temperature_hw_vid" />
+</androidx.constraintlayout.widget.ConstraintLayout>
