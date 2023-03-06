@@ -10,10 +10,12 @@
     <TextView
         android:id="@+id/currentDateTime_vid"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="35dp"
+        android:background="#4B984E"
         android:text="@string/currentDateTime_strres"
         android:textAlignment="center"
         android:textStyle="bold"
+        android:gravity="center"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
