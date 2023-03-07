@@ -1,5 +1,6 @@
 package com.example.visualcrossingweatherapp;
 
+import android.text.format.DateUtils;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -8,18 +9,29 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 public class HourlyWeatherAdapter extends RecyclerView.Adapter<HourlyWeatherViewHolder> {
-    private final List<HourlyWeather> hourlyWeatherList;
+    private final ArrayList<HourlyWeather> hourlyWeatherList;
     private final MainActivity main_activity;
 
     private static final String TAG = "HourlyWeatherAdapter";
+    private String temperatureUnit;
 
-    HourlyWeatherAdapter(List<HourlyWeather> hourWeatherList, MainActivity main_activity) {
+    HourlyWeatherAdapter(ArrayList<HourlyWeather> hourWeatherList, MainActivity main_activity, String temperatureUnit) {
         this.hourlyWeatherList = hourWeatherList;
         this.main_activity = main_activity;
+        this.temperatureUnit = temperatureUnit;
     }
+
+    public void setTemperatureUnit(String temperatureUnit) {
+        this.temperatureUnit = temperatureUnit;
+    }
+
     @NonNull
     @Override
     public HourlyWeatherViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -28,7 +40,7 @@ public class HourlyWeatherAdapter extends RecyclerView.Adapter<HourlyWeatherView
         View view = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.hourly_weather_list, parent, false);
 
-        view.setOnClickListener((View.OnClickListener) main_activity);
+        //view.setOnClickListener((View.OnClickListener) main_activity);
         //view.setOnLongClickListener(main_activity);
 
         return new HourlyWeatherViewHolder(view);
@@ -37,14 +49,31 @@ public class HourlyWeatherAdapter extends RecyclerView.Adapter<HourlyWeatherView
     @Override
     public void onBindViewHolder(@NonNull HourlyWeatherViewHolder holder, int position) {
         HourlyWeather hourlyWeather = hourlyWeatherList.get(position);
-        holder.description.setText(hourlyWeather.getDescription());
-        holder.temperature.setText(hourlyWeather.getTemperature());
-        holder.day.setText(hourlyWeather.getDay());
-        holder.time.setText(hourlyWeather.getTime());
+        holder.description.setText(hourlyWeather.getConditions());
+        String temp = String.format("%.0f %s", hourlyWeather.getTemperature(), this.temperatureUnit);
+        holder.temperature.setText(temp);
+        String dayName = "";
+        long milli = (long) hourlyWeather.getDateTimeEpoch() * 1000;
+        Date cd = new Date(milli);
+        SimpleDateFormat fullDate = new SimpleDateFormat("EEE MMM dd h:mm a, yyyy", Locale.getDefault());
+        SimpleDateFormat dateFormat = new SimpleDateFormat ("h:mm a");
+        SimpleDateFormat dayFormat = new SimpleDateFormat("EEEE");
+        String fullDateStr = fullDate.format(cd);
+        if(DateUtils.isToday(cd.getTime())){
+            dayName = "Today";
+            holder.day.setText(dayName);
+        }
+        else{
+            dayName = dayFormat.format(cd);
+            holder.day.setText(dayName);
+        }
+        holder.time.setText(dateFormat.format(cd));
+        //holder.time.setText(hourlyWeather.getDateTimeEpoch());
+        holder.icon.setImageResource(main_activity.weatherIcon(hourlyWeather.getIcon()));
     }
 
     @Override
     public int getItemCount() {
-        return 0;
+        return hourlyWeatherList.size();
     }
 }

@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">Visual Crossing Weather App</string>
     <string name="currentDateTime_strres">TextView</string>
-    <string name="temperature_strres">TextView</string>
+    <string name="temperature_strres"></string>
     <string name="feelsLike_strres">TextView</string>
     <string name="description_strres">TextView</string>
     <string name="winds_strres">TextView</string>
@@ -18,4 +18,7 @@
     <string name="day_hw_strres">TextView</string>
     <string name="temperature_hw_strres">TextView</string>
     <string name="description_hw_strres">TextView</string>
+    <string name="change_unit">Change unit</string>
+    <string name="daily_forecast">Daily Forecast</string>
+    <string name="change_location">Change Location</string>
 </resources>

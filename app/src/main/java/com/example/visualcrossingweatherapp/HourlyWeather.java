@@ -1,54 +1,65 @@
 package com.example.visualcrossingweatherapp;
 
 public class HourlyWeather {
+    private int dateTimeEpoch;
+    private String conditions;
+    private String icon;
+    private double temperature;
     private String day;
-    private String time;
-    private String description;
-    private String temperature;
 
     HourlyWeather(){
+        this.dateTimeEpoch = 0;
+        this.icon = "";
+        this.conditions = "";
+        this.temperature = 0;
         this.day = "";
-        this.description = "";
-        this.time = "";
-        this.temperature = "";
     }
 
-    HourlyWeather(String day, String time, String description, String temperature){
-        this.day = day;
-        this.description = description;
-        this.time = time;
+    HourlyWeather(int dateTimeEpoch, String conditions, String icon, double temperature, String day){
+        this.dateTimeEpoch = dateTimeEpoch;
+        this.icon = icon;
+        this.conditions = conditions;
+        this.day = "";
         this.temperature = temperature;
+    }
+
+    public int getDateTimeEpoch() {
+        return dateTimeEpoch;
+    }
+
+    public String getIcon() {
+        return icon;
+    }
+
+    public double getTemperature() {
+        return temperature;
+    }
+
+    public String getConditions() {
+        return conditions;
     }
 
     public String getDay() {
         return day;
     }
 
-    public String getDescription() {
-        return description;
+    public void setDateTimeEpoch(int dateTimeEpoch) {
+        this.dateTimeEpoch = dateTimeEpoch;
     }
 
-    public String getTemperature() {
-        return temperature;
+    public void setIcon(String icon) {
+        this.icon = icon;
     }
 
-    public String getTime() {
-        return time;
+    public void setTemperature(double temperature) {
+        this.temperature = temperature;
+    }
+
+    public void setConditions(String conditions) {
+        this.conditions = conditions;
     }
 
     public void setDay(String day) {
         this.day = day;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public void setTemperature(String temperature) {
-        this.temperature = temperature;
-    }
-
-    public void setTime(String time) {
-        this.time = time;
     }
 }
