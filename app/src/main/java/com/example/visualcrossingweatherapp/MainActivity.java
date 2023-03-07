@@ -52,6 +52,7 @@ public class MainActivity extends AppCompatActivity {
     private boolean unitToggle;
     private String temperatureUnit;
     private String measurement;
+    private String windMeasurement;
     private ArrayList<DaysWeather> daysWeathers;
     private CurrentWeather currentWeather;
     //private WeatherDataDownloader weatherDataDownloader;
@@ -84,6 +85,7 @@ public class MainActivity extends AppCompatActivity {
         temperatureUnit = "°F";
         //this.updateData(this.daysWeathers, this.currentWeather);
         measurement = "us";
+        windMeasurement = "mph";
 
         if(networkFlag){
             WeatherDataDownloader.getCrossingWeatherData(this,"Chicago,IL",measurement);
@@ -96,7 +98,7 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    public void setData(ArrayList<DaysWeather> daysWeather, CurrentWeather currentWeather){
+    /*public void setData(ArrayList<DaysWeather> daysWeather, CurrentWeather currentWeather){
         if(daysWeather == null || currentWeather == null){
             Toast.makeText(this, "No data to show.", Toast.LENGTH_SHORT).show();
             return;
@@ -104,7 +106,7 @@ public class MainActivity extends AppCompatActivity {
         this.currentWeather = currentWeather;
         this.daysWeathers = daysWeather;
 
-    }
+    }*/
     public void updateData(ArrayList<DaysWeather> daysWeather, CurrentWeather currentWeather){
         //for(int i = 0;i < days)
         if(daysWeather == null || currentWeather == null){
@@ -166,7 +168,37 @@ public class MainActivity extends AppCompatActivity {
         ArrayList<HourlyWeather> tempArray = daysWeather.get(0).getHourlyWeatherArrayList();
         tempArray.addAll(tempArray.size(), daysWeather.get(1).getHourlyWeatherArrayList());
 
-        double morningTemp = tempArray.get(7).getTemperature();
+        double morningTemp = tempArray.get(8).getTemperature();
+        String morningStr = String.format("%.0f %s\nMorning", morningTemp, temperatureUnit);
+        morningMain.setText(morningStr);
+
+        double afternoonTemp = tempArray.get(13).getTemperature();
+        String afternoonStr = String.format("%.0f %s\nAfternoon", afternoonTemp, temperatureUnit);
+        afternoonMain.setText(afternoonStr);
+
+        double eveningTemp = tempArray.get(17).getTemperature();
+        String eveningStr = String.format("%.0f %s\nEvening", eveningTemp, temperatureUnit);
+        eveningMain.setText(eveningStr);
+
+        double nightTemp = tempArray.get(23).getTemperature();
+        String nightStr = String.format("%.0f %s\nAfternoon", nightTemp, temperatureUnit);
+        nightMain.setText(nightStr);
+
+        //Wind
+        double wdir = currentWeather.getWindDir();
+        String sdir = getDirection(wdir);
+        double wgust = currentWeather.getWindgust();
+        String sgust = "";
+        if(wgust == -1){
+            sgust = ", No wind gust";
+        }
+        else{
+            sgust = String.format("gusting to %.1f %s", wgust, windMeasurement);
+        }
+        double wspeed = currentWeather.getWindspeed();
+        String sspeed = String.format("at %.1f %s", wspeed, windMeasurement);
+        String wind = String.format("Winds: %s at %s %s", sdir, sspeed, sgust);
+        windsMain.setText(wind);
         //ArrayList<HourlyWeather> hourlyWeatherArrayList = new ArrayList<>();
         /*for(int i = 0 ;i<tempArray.size();i++){
             HourlyWeather hw = new HourlyWeather();
@@ -213,6 +245,26 @@ public class MainActivity extends AppCompatActivity {
         sunsetMain.setVisibility(View.INVISIBLE);
     }
 
+    private String getDirection(double degrees) {
+        if (degrees >= 337.5 || degrees < 22.5)
+            return "N";
+        if (degrees >= 22.5 && degrees < 67.5)
+            return "NE";
+        if (degrees >= 67.5 && degrees < 112.5)
+            return "E";
+        if (degrees >= 112.5 && degrees < 157.5)
+            return "SE";
+        if (degrees >= 157.5 && degrees < 202.5)
+            return "S";
+        if (degrees >= 202.5 && degrees < 247.5)
+            return "SW";
+        if (degrees >= 247.5 && degrees < 292.5)
+            return "W";
+        if (degrees >= 292.5 && degrees < 337.5)
+            return "NW";
+        return "X"; // We'll use 'X' as the default if we get a bad value
+    }
+
     public int weatherIcon(String iconText){
         int icon = this.getResources().getIdentifier(iconText, "drawable", this.getPackageName());
         if(icon!=0){
@@ -256,6 +308,7 @@ public class MainActivity extends AppCompatActivity {
                 temperatureUnit = "°C";
                 unitToggle = false;
                 measurement = "metric";
+                windMeasurement = "kmh";
                 WeatherDataDownloader.getCrossingWeatherData(this,"Chicago,IL",measurement);
                 Objects.requireNonNull(this.getSupportActionBar()).setTitle("Chicago,IL");
                 //updateData(this.daysWeathers, this.currentWeather);
@@ -265,6 +318,7 @@ public class MainActivity extends AppCompatActivity {
                 temperatureUnit = "°F";
                 unitToggle = true;
                 measurement = "us";
+                windMeasurement = "mph";
                 WeatherDataDownloader.getCrossingWeatherData(this,"Chicago,IL",measurement);
                 Objects.requireNonNull(this.getSupportActionBar()).setTitle("Chicago,IL");
                 //updateData(this.daysWeathers, this.currentWeather);
