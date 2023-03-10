@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="100dp"
-    android:layout_height="180dp"
+    android:layout_height="160dp"
     android:background="#2DD14D">
 
     <TextView
@@ -20,7 +20,7 @@
         android:id="@+id/time_hw_vid"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="8dp"
         android:text="@string/time_hw_strres"
         android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="@+id/day_hw_vid"

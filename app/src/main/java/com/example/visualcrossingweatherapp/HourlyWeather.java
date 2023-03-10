@@ -1,6 +1,8 @@
 package com.example.visualcrossingweatherapp;
 
-public class HourlyWeather {
+import java.io.Serializable;
+
+public class HourlyWeather implements Serializable {
     private int dateTimeEpoch;
     private String conditions;
     private String icon;

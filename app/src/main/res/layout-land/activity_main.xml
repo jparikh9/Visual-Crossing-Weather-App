@@ -9,14 +9,13 @@
 
     <TextView
         android:id="@+id/currentDateTime_vid"
-        android:layout_width="0dp"
+        android:layout_width="wrap_content"
         android:layout_height="35dp"
-        android:background="#4B984E"
         android:gravity="center"
         android:text="@string/currentDateTime_strres"
         android:textAlignment="center"
         android:textColor="@color/white"
-        android:textSize="20sp"
+        android:textSize="16sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -24,28 +23,25 @@
 
     <TextView
         android:id="@+id/temperature_vid"
-        android:layout_width="0dp"
-        android:layout_height="70dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="16dp"
+        android:layout_width="100dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="8dp"
         android:gravity="center"
         android:text="@string/temperature_strres"
         android:textAlignment="textStart"
         android:textColor="@color/white"
         android:textSize="35sp"
         android:textStyle="bold"
-        app:layout_constraintEnd_toStartOf="@+id/weatherIcon_vid"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/currentDateTime_vid"
+        app:layout_constraintStart_toStartOf="@+id/sunrise_vid"
+        app:layout_constraintTop_toBottomOf="@+id/sunrise_vid"
         tools:ignore="RtlCompat" />
 
     <ImageView
         android:id="@+id/weatherIcon_vid"
-        android:layout_width="105dp"
-        android:layout_height="110dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="24dp"
+        android:layout_width="70dp"
+        android:layout_height="71dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/currentDateTime_vid"
         app:srcCompat="@mipmap/ic_launcher" />
@@ -56,9 +52,9 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:text="@string/feelsLike_strres"
-        android:textStyle="bold"
         android:textColor="@color/white"
-        android:textSize="18sp"
+        android:textSize="14sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="@+id/temperature_vid"
         app:layout_constraintStart_toStartOf="@+id/temperature_vid"
         app:layout_constraintTop_toBottomOf="@+id/temperature_vid" />
@@ -66,52 +62,54 @@
     <TextView
         android:id="@+id/description_vid"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="14dp"
+        android:layout_height="24dp"
+        android:layout_marginStart="24dp"
         android:text="@string/description_strres"
         android:textAlignment="center"
+        android:textColor="@color/white"
         android:textSize="18sp"
         android:textStyle="bold"
-        android:textColor="@color/white"
-        app:layout_constraintEnd_toEndOf="@+id/weatherIcon_vid"
-        app:layout_constraintStart_toStartOf="@+id/feelsLike_vid"
-        app:layout_constraintTop_toBottomOf="@+id/weatherIcon_vid" />
+        app:layout_constraintStart_toEndOf="@+id/temperature_vid"
+        app:layout_constraintTop_toTopOf="@+id/temperature_vid" />
 
     <TextView
         android:id="@+id/winds_vid"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
+        android:layout_marginEnd="24dp"
         android:text="@string/winds_strres"
         android:textAlignment="center"
-        android:textStyle="bold"
         android:textColor="@color/white"
         android:textSize="18sp"
-        app:layout_constraintEnd_toEndOf="@+id/description_vid"
-        app:layout_constraintStart_toStartOf="@+id/description_vid"
-        app:layout_constraintTop_toBottomOf="@+id/description_vid" />
+        android:textStyle="bold"
+        app:layout_constraintEnd_toStartOf="@+id/weatherIcon_vid"
+        app:layout_constraintTop_toTopOf="@+id/weatherIcon_vid" />
 
     <TextView
         android:id="@+id/humidity_vid"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginBottom="16dp"
         android:text="@string/humidity_strres"
-        android:textSize="18sp"
-        android:textStyle="bold"
+        android:textAlignment="textEnd"
         android:textColor="@color/white"
-        app:layout_constraintStart_toStartOf="@+id/winds_vid"
-        app:layout_constraintTop_toBottomOf="@+id/winds_vid" />
+        android:textSize="14sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/feelsLike_vid"
+        app:layout_constraintEnd_toEndOf="@+id/description_vid"
+        app:layout_constraintHorizontal_bias="0.333"
+        app:layout_constraintStart_toStartOf="@+id/description_vid" />
 
     <TextView
         android:id="@+id/uvindex_vid"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="8dp"
         android:text="@string/uvindex_strres"
-        android:textStyle="bold"
-        android:textSize="18sp"
         android:textColor="@color/white"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@+id/humidity_vid"
         app:layout_constraintStart_toStartOf="@+id/humidity_vid"
         app:layout_constraintTop_toBottomOf="@+id/humidity_vid" />
 
@@ -119,52 +117,53 @@
         android:id="@+id/visibility_vid"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
         android:text="@string/visibility_strres"
         android:textAlignment="textEnd"
-        android:textStyle="bold"
-        android:textSize="18sp"
         android:textColor="@color/white"
-        app:layout_constraintEnd_toEndOf="@+id/winds_vid"
-        app:layout_constraintStart_toEndOf="@+id/uvindex_vid"
-        app:layout_constraintTop_toTopOf="@+id/uvindex_vid" />
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/weatherIcon_vid"
+        app:layout_constraintEnd_toEndOf="@+id/winds_vid" />
 
     <TextView
         android:id="@+id/morning_vid"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
+        android:layout_marginStart="124dp"
+        android:layout_marginTop="8dp"
         android:text="@string/morning_strres"
-        android:textSize="18sp"
-        android:textStyle="bold"
         android:textColor="@color/white"
-        app:layout_constraintStart_toStartOf="@+id/uvindex_vid"
-        app:layout_constraintTop_toBottomOf="@+id/uvindex_vid" />
+        android:textSize="14sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/afternoon_vid"
+        app:layout_constraintStart_toStartOf="@+id/feelsLike_vid"
+        app:layout_constraintTop_toBottomOf="@+id/visibility_vid" />
 
     <TextView
         android:id="@+id/afternoon_vid"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginStart="64dp"
+        android:layout_marginTop="8dp"
         android:text="@string/afternoon_strres"
-        android:textSize="18sp"
         android:textColor="@color/white"
+        android:textSize="14sp"
         android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/evening_vid"
         app:layout_constraintStart_toEndOf="@+id/morning_vid"
         app:layout_constraintTop_toBottomOf="@+id/visibility_vid" />
 
     <TextView
         android:id="@+id/night_vid"
-        android:layout_width="0dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="8dp"
         android:text="@string/night_strres"
         android:textColor="@color/white"
-        android:textSize="18sp"
+        android:textSize="14sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="@+id/visibility_vid"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toEndOf="@+id/evening_vid"
         app:layout_constraintTop_toBottomOf="@+id/visibility_vid" />
 
@@ -172,45 +171,47 @@
         android:id="@+id/evening_vid"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginStart="64dp"
+        android:layout_marginTop="8dp"
         android:text="@string/evening_strres"
         android:textColor="@color/white"
-        android:textSize="18sp"
+        android:textSize="14sp"
         android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/night_vid"
         app:layout_constraintStart_toEndOf="@+id/afternoon_vid"
         app:layout_constraintTop_toBottomOf="@+id/visibility_vid" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerViewHourly_vid"
-        android:layout_width="409dp"
-        android:layout_height="185dp"
-        android:layout_marginTop="16dp"
+        android:layout_width="0dp"
+        android:layout_height="160dp"
+        android:layout_marginTop="8dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/morning_vid" />
+        app:layout_constraintTop_toBottomOf="@+id/afternoon_vid" />
 
     <TextView
         android:id="@+id/sunrise_vid"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginStart="16dp"
         android:text="@string/sunrise_strres"
-        android:textStyle="bold"
         android:textColor="@color/white"
-        android:textSize="18sp"
-        app:layout_constraintStart_toStartOf="@+id/uvindex_vid"
-        app:layout_constraintTop_toBottomOf="@+id/recyclerViewHourly_vid" />
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/currentDateTime_vid"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/sunset_vid"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginEnd="8dp"
         android:text="@string/sunset_strres"
-        android:textSize="18sp"
-        android:textStyle="bold"
         android:textColor="@color/white"
-        app:layout_constraintEnd_toEndOf="@+id/visibility_vid"
-        app:layout_constraintTop_toBottomOf="@+id/recyclerViewHourly_vid" />
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,8 +1,9 @@
 package com.example.visualcrossingweatherapp;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class DaysWeather {
+public class DaysWeather implements Serializable {
     private int dateTimeEpoch;
     private double tempMax;
     private double tempMin;

@@ -17,7 +17,7 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 
 public class WeatherDataDownloader {
-    private static MainActivity mainActivity;
+    private MainActivity mainActivity;
 
     // the weather api url
     private static final String crossingWeatherURL = "https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/";
@@ -27,10 +27,13 @@ public class WeatherDataDownloader {
     private static RequestQueue queue;
 
     private static final String TAG = "WeatherDownloadRunnable";
+    WeatherDataDownloader(MainActivity ma){
+        mainActivity = ma;
+    }
     //private static String measurementUnit;
 
-    public static void getCrossingWeatherData(MainActivity mainAct, String city, String measurement){
-        mainActivity = mainAct;
+    public void getCrossingWeatherData(String city, String measurement){
+        //mainActivity = mainAct;
         queue = Volley.newRequestQueue(mainActivity);
         //measurementUnit = measurement;
 
@@ -116,12 +119,13 @@ public class WeatherDataDownloader {
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
-                mainActivity.updateData(daysData, currentWeather);
+                mainActivity.updateData(daysData, currentWeather, city);
             };
 
             Response.ErrorListener error = error1 -> {
                 error1.getMessage();
                 Log.d(TAG, "downloadWeather: Error: " + error1.getMessage());
+                mainActivity.updateData(null,null, null);
                 //mainActivity.updateData();
             };
             try {

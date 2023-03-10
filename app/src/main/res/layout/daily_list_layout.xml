@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/background">
+
+    <TextView
+        android:id="@+id/night_d_vid"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:text="TextView"
+        android:textColor="@color/white"
+        android:textSize="21sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toEndOf="@+id/evening_d_vid"
+        app:layout_constraintTop_toTopOf="@+id/evening_d_vid" />
+
+    <TextView
+        android:id="@+id/day_d_vid"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="#4B984E"
+        android:text="TextView"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.02"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/temp_d_vid"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:text="TextView"
+        android:textColor="@color/white"
+        android:textSize="28sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toStartOf="@+id/icon_d_vid"
+        app:layout_constraintStart_toStartOf="@+id/day_d_vid"
+        app:layout_constraintTop_toBottomOf="@+id/day_d_vid" />
+
+    <TextView
+        android:id="@+id/description_d_vid"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:text="TextView"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toStartOf="@+id/icon_d_vid"
+        app:layout_constraintStart_toStartOf="@+id/temp_d_vid"
+        app:layout_constraintTop_toBottomOf="@+id/temp_d_vid" />
+
+    <TextView
+        android:id="@+id/perci_d_vid"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:text="TextView"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toStartOf="@+id/icon_d_vid"
+        app:layout_constraintStart_toStartOf="@+id/description_d_vid"
+        app:layout_constraintTop_toBottomOf="@+id/description_d_vid" />
+
+    <TextView
+        android:id="@+id/uv_d_vid"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:text="TextView"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toStartOf="@+id/icon_d_vid"
+        app:layout_constraintStart_toStartOf="@+id/description_d_vid"
+        app:layout_constraintTop_toBottomOf="@+id/perci_d_vid" />
+
+    <TextView
+        android:id="@+id/morning_d_vid"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:text="TextView"
+        android:textColor="@color/white"
+        android:textSize="21sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/uv_d_vid" />
+
+    <TextView
+        android:id="@+id/noon_d_vid"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:text="TextView"
+        android:textColor="@color/white"
+        android:textSize="21sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toEndOf="@+id/morning_d_vid"
+        app:layout_constraintTop_toTopOf="@+id/morning_d_vid" />
+
+    <TextView
+        android:id="@+id/evening_d_vid"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:text="TextView"
+        android:textColor="@color/white"
+        android:textSize="21sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toEndOf="@+id/noon_d_vid"
+        app:layout_constraintTop_toTopOf="@+id/noon_d_vid" />
+
+    <ImageView
+        android:id="@+id/icon_d_vid"
+        android:layout_width="101dp"
+        android:layout_height="104dp"
+        android:layout_marginTop="52dp"
+        android:layout_marginEnd="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:srcCompat="@tools:sample/avatars" />
+</androidx.constraintlayout.widget.ConstraintLayout>

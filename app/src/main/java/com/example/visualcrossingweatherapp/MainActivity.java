@@ -1,10 +1,13 @@
 package com.example.visualcrossingweatherapp;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
@@ -12,20 +15,18 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import org.w3c.dom.Text;
-
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 import java.util.Locale;
 import java.util.Objects;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity{
 
     //private final ArrayList<HourlyWeather> hourlyWeatherList = new ArrayList<>();
 
@@ -55,7 +56,8 @@ public class MainActivity extends AppCompatActivity {
     private String windMeasurement;
     private ArrayList<DaysWeather> daysWeathers;
     private CurrentWeather currentWeather;
-    //private WeatherDataDownloader weatherDataDownloader;
+    private WeatherDataDownloader weatherDataDownloader;
+    private String city;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -79,16 +81,17 @@ public class MainActivity extends AppCompatActivity {
         //hourlyWeatherAdapter = new HourlyWeatherAdapter(this);
         //recycler_view_hourly.setAdapter(hourlyWeatherAdapter);
         recycler_view_hourly.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
-        //weatherDataDownloader = new WeatherDataDownloader();
+        weatherDataDownloader = new WeatherDataDownloader(this);
         networkFlag = hasNetworkConnection();
         unitToggle = true;
         temperatureUnit = "°F";
         //this.updateData(this.daysWeathers, this.currentWeather);
         measurement = "us";
         windMeasurement = "mph";
+        city = "Chicago,IL";
 
         if(networkFlag){
-            WeatherDataDownloader.getCrossingWeatherData(this,"Chicago,IL",measurement);
+            weatherDataDownloader.getCrossingWeatherData("Chicago,IL",measurement);
             Objects.requireNonNull(this.getSupportActionBar()).setTitle("Chicago,IL");
         }
         else{
@@ -107,12 +110,24 @@ public class MainActivity extends AppCompatActivity {
         this.daysWeathers = daysWeather;
 
     }*/
-    public void updateData(ArrayList<DaysWeather> daysWeather, CurrentWeather currentWeather){
+    public void downloadWeatherForCity(String city){
+        //this.city = city;
+        //wd.getCrossingWeatherData(city,measurement);
+
+        download(city);
+        //Objects.requireNonNull(this.getSupportActionBar()).setTitle(city);
+    }
+    public void download(String city){
+        this.weatherDataDownloader.getCrossingWeatherData(city, this.measurement);
+    }
+    public void updateData(ArrayList<DaysWeather> daysWeather, CurrentWeather currentWeather, String city){
         //for(int i = 0;i < days)
         if(daysWeather == null || currentWeather == null){
-            Toast.makeText(this, "No data to show.", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "No data to show. Maybe Entered wrong city.", Toast.LENGTH_LONG).show();
             return;
         }
+        this.city = city;
+        Objects.requireNonNull(this.getSupportActionBar()).setTitle(this.city);
         this.currentWeather = currentWeather;
         this.daysWeathers = daysWeather;
 
@@ -180,8 +195,9 @@ public class MainActivity extends AppCompatActivity {
         String eveningStr = String.format("%.0f %s\nEvening", eveningTemp, temperatureUnit);
         eveningMain.setText(eveningStr);
 
-        double nightTemp = tempArray.get(23).getTemperature();
-        String nightStr = String.format("%.0f %s\nAfternoon", nightTemp, temperatureUnit);
+
+        double nightTemp = tempArray.get(tempArray.size() - 1).getTemperature();
+        String nightStr = String.format("%.0f %s\nNight", nightTemp, temperatureUnit);
         nightMain.setText(nightStr);
 
         //Wind
@@ -230,7 +246,7 @@ public class MainActivity extends AppCompatActivity {
         dateTimeMain.setText(noInternetMsg);
         temperatureMain.setVisibility(View.INVISIBLE);
         weatherIconMain.setVisibility(View.INVISIBLE);
-        //recycler_view_hourly.setVisibility(View.INVISIBLE);
+        recycler_view_hourly.setVisibility(View.INVISIBLE);
         feelsLikeMain.setVisibility(View.INVISIBLE);
         descriptionMain.setVisibility(View.INVISIBLE);
         windsMain.setVisibility(View.INVISIBLE);
@@ -243,6 +259,24 @@ public class MainActivity extends AppCompatActivity {
         nightMain.setVisibility(View.INVISIBLE);
         sunriseMain.setVisibility(View.INVISIBLE);
         sunsetMain.setVisibility(View.INVISIBLE);
+    }
+
+    private void setMainLayoutVisible(){
+        temperatureMain.setVisibility(View.VISIBLE);
+        weatherIconMain.setVisibility(View.VISIBLE);
+        recycler_view_hourly.setVisibility(View.VISIBLE);
+        feelsLikeMain.setVisibility(View.VISIBLE);
+        descriptionMain.setVisibility(View.VISIBLE);
+        windsMain.setVisibility(View.VISIBLE);
+        humidityMain.setVisibility(View.VISIBLE);
+        uvindexMain.setVisibility(View.VISIBLE);
+        visibilityMain.setVisibility(View.VISIBLE);
+        morningMain.setVisibility(View.VISIBLE);
+        afternoonMain.setVisibility(View.VISIBLE);
+        eveningMain.setVisibility(View.VISIBLE);
+        nightMain.setVisibility(View.VISIBLE);
+        sunriseMain.setVisibility(View.VISIBLE);
+        sunsetMain.setVisibility(View.VISIBLE);
     }
 
     private String getDirection(double degrees) {
@@ -280,7 +314,7 @@ public class MainActivity extends AppCompatActivity {
             setNoInternetMainLayout();
         }
         else{
-            updateData(this.daysWeathers, this.currentWeather);
+            updateData(this.daysWeathers, this.currentWeather, this.city);
         }
 
         super.onPause();
@@ -301,6 +335,7 @@ public class MainActivity extends AppCompatActivity {
             Toast.makeText(this, "Cannot use menu items when no Internet", Toast.LENGTH_SHORT).show();
             return true;
         }
+        setMainLayoutVisible();
         int selected = item.getItemId();
         if(selected == R.id.unitToggle){
             if (unitToggle){
@@ -309,8 +344,9 @@ public class MainActivity extends AppCompatActivity {
                 unitToggle = false;
                 measurement = "metric";
                 windMeasurement = "kmh";
-                WeatherDataDownloader.getCrossingWeatherData(this,"Chicago,IL",measurement);
-                Objects.requireNonNull(this.getSupportActionBar()).setTitle("Chicago,IL");
+                downloadWeatherForCity(this.city);
+                //weatherDataDownloader.getCrossingWeatherData("Chicago,IL",measurement);
+                //Objects.requireNonNull(this.getSupportActionBar()).setTitle("Chicago,IL");
                 //updateData(this.daysWeathers, this.currentWeather);
             }
             else {
@@ -319,14 +355,66 @@ public class MainActivity extends AppCompatActivity {
                 unitToggle = true;
                 measurement = "us";
                 windMeasurement = "mph";
-                WeatherDataDownloader.getCrossingWeatherData(this,"Chicago,IL",measurement);
-                Objects.requireNonNull(this.getSupportActionBar()).setTitle("Chicago,IL");
+                downloadWeatherForCity(this.city);
+                //weatherDataDownloader.getCrossingWeatherData("Chicago,IL",measurement);
+                //Objects.requireNonNull(this.getSupportActionBar()).setTitle("Chicago,IL");
                 //updateData(this.daysWeathers, this.currentWeather);
             }
             return true;
         }
+        else if(selected == R.id.dailyToggle){
+            Intent intent = new Intent(this,DailyWeatherDataActivity.class);
+            intent.putExtra("dailyArray", this.daysWeathers);
+            intent.putExtra("tempunit", this.temperatureUnit);
+            startActivity(intent);
+            return true;
+        }
+        else if(selected == R.id.location){
+            //WeatherDataDownloader wd = new WeatherDataDownloader(this);
+            EditText location = new EditText(this);
+            AlertDialog.Builder builder = new AlertDialog.Builder(this);
+            builder.setView(location);
+            builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialogInterface, int i) {
+                    String text = location.getText().toString();
+                    if(!text.isEmpty()){
+                        text = text.trim().replaceAll(", ", ",");
+                        //wd.getCrossingWeatherData();
+                        downloadWeatherForCity(text);
+                        //Objects.requireNonNull(this.getSupportActionBar()).setTitle("Chicago,IL");
+                    }
+                    else {
+                        showMessageLocationNull();
+                        //Toast.makeText(this, "Cannot use menu items when no Internet", Toast.LENGTH_SHORT).show();
+                    }
+                    //finish();
+                }
+            });
+            builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialogInterface, int i) {
+                    return;
+                }
+            });
+
+
+            builder.setTitle("Enter Location");
+            builder.setMessage("Enter city");
+
+            AlertDialog dialog = builder.create();
+            dialog.show();
+            //download();
+            //return true;
+        }
         else {
             return super.onOptionsItemSelected(item);
         }
+        //download();
+        return true;
+    }
+
+    public void showMessageLocationNull(){
+        Toast.makeText(this, "Enter city name", Toast.LENGTH_SHORT).show();
     }
 }
